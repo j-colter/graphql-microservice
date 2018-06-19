@@ -1,0 +1,472 @@
+{
+  "stats": {
+    "suites": 12,
+    "tests": 9,
+    "passes": 9,
+    "pending": 0,
+    "failures": 0,
+    "start": "2018-06-15T08:14:24.474Z",
+    "end": "2018-06-15T08:14:26.051Z",
+    "duration": 1577,
+    "testsRegistered": 9,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false,
+    "passPercentClass": "success",
+    "pendingPercentClass": "danger"
+  },
+  "suites": {
+    "uuid": "632c4db3-6d0b-4d3f-a802-1a134f4bdfa9",
+    "title": "",
+    "fullFile": "",
+    "file": "",
+    "beforeHooks": [],
+    "afterHooks": [],
+    "tests": [],
+    "suites": [
+      {
+        "uuid": "1bbee72d-7124-4a9b-969d-a8108281bcb9",
+        "title": "Order",
+        "fullFile": "/Users/alu/Desktop/test/graphql-sequelize-demo/test/model/Order.js",
+        "file": "/test/model/Order.js",
+        "beforeHooks": [
+          {
+            "title": "\"before all\" hook",
+            "fullTitle": "Order \"before all\" hook",
+            "timedOut": false,
+            "duration": 50,
+            "pass": false,
+            "fail": false,
+            "pending": false,
+            "code": "const models = await (0, _helpers.initSequelize)();\nUser = models.User;\nOrder = models.Order;\nOrderDetail = models.OrderDetail;\nuser = await User.findOne({ where: { phoneNumber: '18674083822' } });\norder = await Order.findOne();",
+            "err": {},
+            "isRoot": false,
+            "uuid": "5ca349fc-27d8-4c22-a120-85d96bd2c8d8",
+            "isHook": true,
+            "skipped": false
+          }
+        ],
+        "afterHooks": [],
+        "tests": [],
+        "suites": [
+          {
+            "uuid": "e6a38e48-83b1-41f8-a2ee-59e2a8196a6e",
+            "title": "Create",
+            "fullFile": "/Users/alu/Desktop/test/graphql-sequelize-demo/test/model/Order.js",
+            "file": "/test/model/Order.js",
+            "beforeHooks": [],
+            "afterHooks": [],
+            "tests": [
+              {
+                "title": "should create an order and an orderDetail",
+                "fullTitle": "Order Create should create an order and an orderDetail",
+                "timedOut": false,
+                "duration": 19,
+                "state": "passed",
+                "speed": "fast",
+                "pass": true,
+                "fail": false,
+                "pending": false,
+                "code": "const data = {\n  title,\n  amount: randInt(100),\n  userId: user.id\n};\nconst order = await Order.create(data);\n(0, _chai.expect)(order.dataValues).to.deep.include(data);\n// create OrderDetail\nconst orderDetailData = {\n  name: 'test goods',\n  count: randInt(),\n  price: randInt(66),\n  orderId: order.id\n};\nconst orderDetail = await OrderDetail.create(orderDetailData);\n(0, _chai.expect)(orderDetail.dataValues).to.deep.include(orderDetailData);",
+                "err": {},
+                "isRoot": false,
+                "uuid": "13cec89c-3c36-40c8-824e-ede8308527cc",
+                "isHook": false,
+                "skipped": false
+              }
+            ],
+            "suites": [],
+            "passes": [
+              "13cec89c-3c36-40c8-824e-ede8308527cc"
+            ],
+            "failures": [],
+            "pending": [],
+            "skipped": [],
+            "duration": 19,
+            "root": false,
+            "rootEmpty": false,
+            "_timeout": 5000
+          },
+          {
+            "uuid": "afe7e684-ecdd-446f-b3c9-7a2a1607c321",
+            "title": "Delete",
+            "fullFile": "/Users/alu/Desktop/test/graphql-sequelize-demo/test/model/Order.js",
+            "file": "/test/model/Order.js",
+            "beforeHooks": [],
+            "afterHooks": [],
+            "tests": [
+              {
+                "title": "should delete some orders and orderDetails",
+                "fullTitle": "Order Delete should delete some orders and orderDetails",
+                "timedOut": false,
+                "duration": 13,
+                "state": "passed",
+                "speed": "fast",
+                "pass": true,
+                "fail": false,
+                "pending": false,
+                "code": "const where = { title };\nconst res = await Order.destroy({\n  where,\n  individualHooks: true\n});\n(0, _chai.expect)(res).to.gte(1);",
+                "err": {},
+                "isRoot": false,
+                "uuid": "d57dca01-f0ee-4cee-bc30-b21e2158bbf5",
+                "isHook": false,
+                "skipped": false
+              }
+            ],
+            "suites": [],
+            "passes": [
+              "d57dca01-f0ee-4cee-bc30-b21e2158bbf5"
+            ],
+            "failures": [],
+            "pending": [],
+            "skipped": [],
+            "duration": 13,
+            "root": false,
+            "rootEmpty": false,
+            "_timeout": 5000
+          },
+          {
+            "uuid": "16736974-61d7-40b8-bddf-29d5cc3ecd6b",
+            "title": "Update",
+            "fullFile": "/Users/alu/Desktop/test/graphql-sequelize-demo/test/model/Order.js",
+            "file": "/test/model/Order.js",
+            "beforeHooks": [],
+            "afterHooks": [],
+            "tests": [
+              {
+                "title": "should update an order",
+                "fullTitle": "Order Update should update an order",
+                "timedOut": false,
+                "duration": 11,
+                "state": "passed",
+                "speed": "fast",
+                "pass": true,
+                "fail": false,
+                "pending": false,
+                "code": "const data = {\n  amount: randFloat()\n};\nif (order) {\n  order.amount = data.amount;\n  await order.save();\n  (0, _chai.expect)(order.amount).to.equal(data.amount);\n}",
+                "err": {},
+                "isRoot": false,
+                "uuid": "9957891c-93af-4ca8-aad6-3dff315075fa",
+                "isHook": false,
+                "skipped": false
+              }
+            ],
+            "suites": [],
+            "passes": [
+              "9957891c-93af-4ca8-aad6-3dff315075fa"
+            ],
+            "failures": [],
+            "pending": [],
+            "skipped": [],
+            "duration": 11,
+            "root": false,
+            "rootEmpty": false,
+            "_timeout": 5000
+          },
+          {
+            "uuid": "86cf5bcd-8871-4697-912f-5c0a307be465",
+            "title": "Query",
+            "fullFile": "/Users/alu/Desktop/test/graphql-sequelize-demo/test/model/Order.js",
+            "file": "/test/model/Order.js",
+            "beforeHooks": [],
+            "afterHooks": [],
+            "tests": [
+              {
+                "title": "should query an order",
+                "fullTitle": "Order Query should query an order",
+                "timedOut": false,
+                "duration": 0,
+                "state": "passed",
+                "speed": "fast",
+                "pass": true,
+                "fail": false,
+                "pending": false,
+                "code": "(0, _chai.expect)(order).to.be.exist;",
+                "err": {},
+                "isRoot": false,
+                "uuid": "644ede55-8963-4b44-b998-8552b0960f4b",
+                "isHook": false,
+                "skipped": false
+              }
+            ],
+            "suites": [],
+            "passes": [
+              "644ede55-8963-4b44-b998-8552b0960f4b"
+            ],
+            "failures": [],
+            "pending": [],
+            "skipped": [],
+            "duration": 0,
+            "root": false,
+            "rootEmpty": false,
+            "_timeout": 5000
+          }
+        ],
+        "passes": [],
+        "failures": [],
+        "pending": [],
+        "skipped": [],
+        "duration": 0,
+        "root": false,
+        "rootEmpty": false,
+        "_timeout": 5000
+      },
+      {
+        "uuid": "11172cea-145a-41b6-bcaa-7f19a2d9aabf",
+        "title": "User",
+        "fullFile": "/Users/alu/Desktop/test/graphql-sequelize-demo/test/model/User.js",
+        "file": "/test/model/User.js",
+        "beforeHooks": [
+          {
+            "title": "\"before all\" hook",
+            "fullTitle": "User \"before all\" hook",
+            "timedOut": false,
+            "duration": 26,
+            "pass": false,
+            "fail": false,
+            "pending": false,
+            "code": "models = await (0, _initSequelize2.default)();\nUser = models.User;\nuser = await User.findOne({ where });\nif (user === null) {\n  user = await User.create(_extends({}, data, { password: 'A1234567890' }));\n}",
+            "err": {},
+            "isRoot": false,
+            "uuid": "4b77bc8b-2356-4ea0-9870-a7b8d97a1196",
+            "isHook": true,
+            "skipped": false
+          }
+        ],
+        "afterHooks": [],
+        "tests": [],
+        "suites": [
+          {
+            "uuid": "07d065e8-59e1-4042-b08c-26dcaf138788",
+            "title": "Create User",
+            "fullFile": "/Users/alu/Desktop/test/graphql-sequelize-demo/test/model/User.js",
+            "file": "/test/model/User.js",
+            "beforeHooks": [],
+            "afterHooks": [],
+            "tests": [
+              {
+                "title": "should create a user",
+                "fullTitle": "User Create User should create a user",
+                "timedOut": false,
+                "duration": 382,
+                "state": "passed",
+                "speed": "slow",
+                "pass": true,
+                "fail": false,
+                "pending": false,
+                "code": "_lodash2.default.assign(deleteData, {\n  password: \"A123456\"\n});\nawait User.create(deleteData);",
+                "err": {},
+                "isRoot": false,
+                "uuid": "931876b4-9f76-49b2-8ef1-29bc87053970",
+                "isHook": false,
+                "skipped": false
+              }
+            ],
+            "suites": [],
+            "passes": [
+              "931876b4-9f76-49b2-8ef1-29bc87053970"
+            ],
+            "failures": [],
+            "pending": [],
+            "skipped": [],
+            "duration": 382,
+            "root": false,
+            "rootEmpty": false,
+            "_timeout": 5000
+          },
+          {
+            "uuid": "d8983a99-fade-43e4-9dfb-89b1df95f6ed",
+            "title": "Delete user",
+            "fullFile": "/Users/alu/Desktop/test/graphql-sequelize-demo/test/model/User.js",
+            "file": "/test/model/User.js",
+            "beforeHooks": [],
+            "afterHooks": [],
+            "tests": [
+              {
+                "title": "should should delete a user",
+                "fullTitle": "User Delete user should should delete a user",
+                "timedOut": false,
+                "duration": 43,
+                "state": "passed",
+                "speed": "medium",
+                "pass": true,
+                "fail": false,
+                "pending": false,
+                "code": "const user = await User.findOne({ where: deleteWhere });\n(0, _chai.expect)(user).to.exist;\nawait user.destroy();",
+                "err": {},
+                "isRoot": false,
+                "uuid": "3698b4e8-03aa-44b5-8074-b432affe23df",
+                "isHook": false,
+                "skipped": false
+              }
+            ],
+            "suites": [],
+            "passes": [
+              "3698b4e8-03aa-44b5-8074-b432affe23df"
+            ],
+            "failures": [],
+            "pending": [],
+            "skipped": [],
+            "duration": 43,
+            "root": false,
+            "rootEmpty": false,
+            "_timeout": 5000
+          },
+          {
+            "uuid": "f6dc171b-5adc-404a-a3b9-b971588ea18d",
+            "title": "Update a uer",
+            "fullFile": "/Users/alu/Desktop/test/graphql-sequelize-demo/test/model/User.js",
+            "file": "/test/model/User.js",
+            "beforeHooks": [],
+            "afterHooks": [],
+            "tests": [
+              {
+                "title": "should update a user",
+                "fullTitle": "User Update a uer should update a user",
+                "timedOut": false,
+                "duration": 1015,
+                "state": "passed",
+                "speed": "slow",
+                "pass": true,
+                "fail": false,
+                "pending": false,
+                "code": "const data = {\n  gender: parseInt(Math.random() * 10, 10) % 3\n  // const user = await User.findOne({where})\n};if (user) {\n  await user.update(data);\n  (0, _chai.expect)(user.gender).to.be.equal(data.gender);\n}",
+                "err": {},
+                "isRoot": false,
+                "uuid": "434b3ebb-070d-48fd-8975-12edf5f72936",
+                "isHook": false,
+                "skipped": false
+              }
+            ],
+            "suites": [],
+            "passes": [
+              "434b3ebb-070d-48fd-8975-12edf5f72936"
+            ],
+            "failures": [],
+            "pending": [],
+            "skipped": [],
+            "duration": 1015,
+            "root": false,
+            "rootEmpty": false,
+            "_timeout": 5000
+          },
+          {
+            "uuid": "a2e09363-a0cc-498b-abea-91f05c6181c3",
+            "title": "Query a user",
+            "fullFile": "/Users/alu/Desktop/test/graphql-sequelize-demo/test/model/User.js",
+            "file": "/test/model/User.js",
+            "beforeHooks": [],
+            "afterHooks": [],
+            "tests": [
+              {
+                "title": "should query a user",
+                "fullTitle": "User Query a user should query a user",
+                "timedOut": false,
+                "duration": 0,
+                "state": "passed",
+                "speed": "fast",
+                "pass": true,
+                "fail": false,
+                "pending": false,
+                "code": "// const attributes = ['username', 'phoneNumber', 'email']\n// const user = await User.findOne({where, attributes})\n(0, _chai.expect)(user.dataValues).to.deep.include(data);",
+                "err": {},
+                "isRoot": false,
+                "uuid": "9ea42266-b15f-40c4-8852-0bc6ace3c528",
+                "isHook": false,
+                "skipped": false
+              }
+            ],
+            "suites": [],
+            "passes": [
+              "9ea42266-b15f-40c4-8852-0bc6ace3c528"
+            ],
+            "failures": [],
+            "pending": [],
+            "skipped": [],
+            "duration": 0,
+            "root": false,
+            "rootEmpty": false,
+            "_timeout": 5000
+          }
+        ],
+        "passes": [],
+        "failures": [],
+        "pending": [],
+        "skipped": [],
+        "duration": 0,
+        "root": false,
+        "rootEmpty": false,
+        "_timeout": 5000
+      },
+      {
+        "uuid": "fca5a1db-a882-4f82-be07-00cec2965781",
+        "title": "expect",
+        "fullFile": "/Users/alu/Desktop/test/graphql-sequelize-demo/test/tutorial/expect.js",
+        "file": "/test/tutorial/expect.js",
+        "beforeHooks": [],
+        "afterHooks": [],
+        "tests": [],
+        "suites": [
+          {
+            "uuid": "dbeeb931-ce29-4414-a57f-0d28fef68ceb",
+            "title": "chai",
+            "fullFile": "/Users/alu/Desktop/test/graphql-sequelize-demo/test/tutorial/expect.js",
+            "file": "/test/tutorial/expect.js",
+            "beforeHooks": [],
+            "afterHooks": [],
+            "tests": [
+              {
+                "title": "should be expect",
+                "fullTitle": "expect chai should be expect",
+                "timedOut": false,
+                "duration": 4,
+                "state": "passed",
+                "speed": "fast",
+                "pass": true,
+                "fail": false,
+                "pending": false,
+                "code": "// Target object deeply (but not strictly) equals `{a: 1}`\n(0, _chai.expect)({ a: 1 }).to.deep.equal({ a: 1 });\n(0, _chai.expect)({ a: 1 }).to.not.equal({ a: 1 });\n// Target array deeply (but not strictly) includes `{a: 1}`\n(0, _chai.expect)([{ a: 1 }]).to.deep.include({ a: 1 });\n(0, _chai.expect)([{ a: 1 }]).to.not.include({ a: 1 });\n// Target object deeply (but not strictly) includes `x: {a: 1}`\n(0, _chai.expect)({ x: { a: 1 } }).to.deep.include({ x: { a: 1 } });\n(0, _chai.expect)({ x: { a: 1 } }).to.not.include({ x: { a: 1 } });\n// Target array deeply (but not strictly) has member `{a: 1}`\n(0, _chai.expect)([{ a: 1 }]).to.have.deep.members([{ a: 1 }]);\n(0, _chai.expect)([{ a: 1 }]).to.not.have.members([{ a: 1 }]);\n// Target set deeply (but not strictly) has key `{a: 1}`\n(0, _chai.expect)(new Set([{ a: 1 }])).to.have.deep.keys([{ a: 1 }]);\n(0, _chai.expect)(new Set([{ a: 1 }])).to.not.have.keys([{ a: 1 }]);\n// Target object deeply (but not strictly) has property `x: {a: 1}`\n(0, _chai.expect)({ x: { a: 1 } }).to.have.deep.property('x', { a: 1 });\n(0, _chai.expect)({ x: { a: 1 } }).to.not.have.property('x', { a: 1 });\n(0, _chai.expect)([1, 2]).to.have.ordered.members([1, 2]).but.not.have.ordered.members([2, 1]);\n(0, _chai.expect)([1, 2, 3]).to.include.ordered.members([1, 2]).but.not.include.ordered.members([2, 3]);\n(0, _chai.expect)(1).to.be.a('number', 'nooo why fail??');\n(0, _chai.expect)(1, 'nooo why fail??').to.be.a('number');\n(0, _chai.expect)({ a: 1, b: 2, c: 3 }).to.include.all.keys('a', 'b');\n(0, _chai.expect)({ a: 1, b: 2, c: 3 }).to.have.any.keys('a', 'b');\n(0, _chai.expect)([1, 2, 3]).to.have.lengthOf.within(2, 4); // Not recommended\n(0, _chai.expect)('foobar').to.match(/^foo/);",
+                "err": {},
+                "isRoot": false,
+                "uuid": "daa2ecbd-ba4c-4ed9-9630-697c6d593f4b",
+                "isHook": false,
+                "skipped": false
+              }
+            ],
+            "suites": [],
+            "passes": [
+              "daa2ecbd-ba4c-4ed9-9630-697c6d593f4b"
+            ],
+            "failures": [],
+            "pending": [],
+            "skipped": [],
+            "duration": 4,
+            "root": false,
+            "rootEmpty": false,
+            "_timeout": 5000
+          }
+        ],
+        "passes": [],
+        "failures": [],
+        "pending": [],
+        "skipped": [],
+        "duration": 0,
+        "root": false,
+        "rootEmpty": false,
+        "_timeout": 5000
+      }
+    ],
+    "passes": [],
+    "failures": [],
+    "pending": [],
+    "skipped": [],
+    "duration": 0,
+    "root": true,
+    "rootEmpty": true,
+    "_timeout": 5000
+  },
+  "copyrightYear": 2018
+}

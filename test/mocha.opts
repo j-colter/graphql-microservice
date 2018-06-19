@@ -1,0 +1,6 @@
+--require babel-core/register
+--require test/helpers/setup.js
+--timeout 5000
+--reporter mochawesome
+--watch
+--recursive
