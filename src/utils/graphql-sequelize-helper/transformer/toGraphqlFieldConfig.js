@@ -16,10 +16,6 @@ var _type = require('../type');
 
 var _type2 = _interopRequireDefault(_type);
 
-// var _Context = require('../Context');
-
-// var _Context2 = _interopRequireDefault(_Context);
-
 var _StringHelper = require('../utils/StringHelper');
 
 var _StringHelper2 = _interopRequireDefault(_StringHelper);

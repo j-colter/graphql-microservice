@@ -8,7 +8,7 @@ import camelcase from 'camelcase'
 import _ from 'lodash'
 
 import * as utils from './utils'
-import { toGraphQLInputFieldMap, toGraphQLFieldConfig, toAttributesFields, toGraphqlType } from './transformer'
+import { toAttributesFields, toGraphqlType } from './transformer'
 import { attributesToFindOptions } from "./query"
 
 const associationFields = ({model, modelTypes}) => {
@@ -27,7 +27,6 @@ const connectionModel = ({model, schemaConfig, modelType, connectionName}) => {
   const connectionWrapper = defaults(modelConfig.connection, {})
   connectionName = connectionName || model.name
   const connectionWrapperFunction = connectionWrapper[connectionName] || ((obj) => (obj))
-  // const connectionName = nameResolver(model, 'read', 'all')
 
   const orderBy = {}
   // console.log('attributes', _.keys(model.attributes))
@@ -105,20 +104,6 @@ const generateLinks = (modelConfig, modelTypes) => {
   const links = _.get(modelConfig, 'links', null)
   if (links) {
     _.assign(returnLinks, toGraphqlType({obj: links, modelTypes, useRoot: true}))
-    // _.forOwn(links, (value, key) => {
-    //   let { type, args } = value
-    //   value.name = key
-    //   value.args = toGraphQLInputFieldMap(key, args)
-    //   value.type = toGraphQLFieldConfig(key, '', value.$type, null, modelTypes).type
-    //   returnLinks[key] = {
-    //     ...value,
-    //     resolve: (_, _ref, context, info) => {
-    //       // modelTypes塞入context, connection查询使用
-    //       context.modelTypes = modelTypes
-    //       return value.resolve(_, _ref, context, info)
-    //     }
-    //   }
-    // })
   }
   return returnLinks
 }

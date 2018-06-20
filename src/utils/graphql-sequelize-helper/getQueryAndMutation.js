@@ -1,6 +1,5 @@
 import {
-  mutationWithClientMutationId,
-  fromGlobalId
+  mutationWithClientMutationId
 } from 'graphql-relay'
 import {
   GraphQLNonNull,
@@ -115,7 +114,6 @@ export default ({
         }
       },
       mutateAndGetPayload: async (args) => {
-        // utils.convertFieldsFromGlobalId(defaultFields, args[0].values)
         const instance = await model.create(args.values)
         return {
           [lowerCaseTableName]: instance
@@ -207,20 +205,6 @@ export default ({
       ...result.queries,
       ...toGraphqlType({obj: queries, modelTypes})
     }
-    // _.forOwn(queries, (value, key) => {
-    //   let { type, args } = value
-    //   value.name = key
-    //   value.args = toGraphQLInputFieldMap(key, args)
-    //   value.type = toGraphQLFieldConfig(key, '', value.$type, null, modelTypes).type
-    //   result.queries[key] = {
-    //     ...value,
-    //     resolve: (_, _ref, context, info) => {
-    //       // modelTypes塞入context, connection查询使用
-    //       context.modelTypes = modelTypes
-    //       return value.resolve(_, _ref, context, info)
-    //     }
-    //   }
-    // })
   }
 
   // 绑定静态方法和实例方法
