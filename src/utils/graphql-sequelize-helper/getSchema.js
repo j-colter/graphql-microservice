@@ -11,7 +11,7 @@ import _ from 'lodash'
 
 import getModelTypes from './getModalTypes'
 import getQueryAndMutation from './getQueryAndMutation'
-import getSubscriptions from './getSubscriptions'
+import getSubscriptions from './subscription/subscriptions'
 
 const { sequelizeConnection } = relay
 
@@ -43,9 +43,9 @@ const getSchema = (sequelize, schemaConfig) => {
       mutations[mutationName] = modelQueryAndMutation.mutations[mutationName]
     }
 
-    const subscriptionType = getSubscriptions({model, modelTypes, schemaConfig, models})
-    for (let subscriptionName in subscriptionType.subscriptions) {
-      subscriptions[subscriptionName] = subscriptionType.subscriptions[subscriptionName]
+    // const subscriptionType = getSubscriptions({model, modelTypes, schemaConfig, models})
+    for (let subscriptionName in modelQueryAndMutation.subscriptions) {
+      subscriptions[subscriptionName] = modelQueryAndMutation.subscriptions[subscriptionName]
     }
   }
   const schema = {}
