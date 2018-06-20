@@ -49,6 +49,7 @@
     "graphql-add-middleware": "^0.1.5",
     "graphql-relay": "^0.5.5",
     "graphql-sequelize": "^8.1.2",
+    "graphql-sequelize-helper": "^0.0.4",
     "graphql-subscriptions": "^0.5.8",
     "jsonwebtoken": "^8.2.2",
     "lodash": "^4.17.10",

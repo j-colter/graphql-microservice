@@ -1,6 +1,6 @@
 import { addMiddleware } from 'graphql-add-middleware';
 
-import schemaHelper from '../utils/graphql-sequelize-helper';
+import schemaHelper from 'graphql-sequelize-helper';
 
 export default (sequelize) => {
   const schema = schemaHelper.getSchema(sequelize);
