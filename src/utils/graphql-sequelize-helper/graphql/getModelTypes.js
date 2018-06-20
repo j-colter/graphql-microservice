@@ -1,15 +1,11 @@
-import {
-  GraphQLObjectType,
-  GraphQLEnumType,
-  GraphQLInt
-} from 'graphql'
+import { GraphQLObjectType, GraphQLEnumType, GraphQLInt } from 'graphql'
 import defaults from 'defaults'
 import camelcase from 'camelcase'
 import _ from 'lodash'
 
-import * as utils from './utils'
-import { toAttributesFields, toGraphqlType } from './transformer'
-import { attributesToFindOptions } from "./query"
+import { utils } from '../utils'
+import { toAttributesFields, toGraphqlType } from '../transformer'
+import { attributesToFindOptions } from "../query"
 
 const associationFields = ({model, modelTypes}) => {
   const fields = {}

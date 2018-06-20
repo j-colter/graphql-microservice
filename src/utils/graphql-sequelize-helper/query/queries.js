@@ -1,16 +1,10 @@
 import _ from 'lodash'
-import {
-  GraphQLNonNull,
-  GraphQLInputObjectType,
-  GraphQLBoolean,
-  GraphQLString,
-  GraphQLList
-} from 'graphql'
+import { GraphQLString, GraphQLList } from 'graphql'
 
-import * as utils from '../utils'
+import { utils } from '../utils'
 import _type from '../type'
-import {attributesToFindOptions} from './index'
-import {toGraphqlType} from '../transformer'
+import { attributesToFindOptions } from './index'
+import { toGraphqlType } from '../transformer'
 
 export default ({
                   model,
@@ -64,10 +58,6 @@ export default ({
   const queries = _.get(modelConfig, 'queries', null)
   if (queries) {
     _.assign(result, toGraphqlType({obj: queries, modelTypes}))
-    // result.queries = {
-    //   ...result.queries,
-    //   ...toGraphqlType({obj: queries, modelTypes})
-    // }
   }
 
   return result

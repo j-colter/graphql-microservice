@@ -1,25 +1,13 @@
 import _ from 'lodash'
 import defaults from 'defaults'
-import {
-  GraphQLNonNull,
-  GraphQLInputObjectType,
-  GraphQLBoolean,
-  GraphQLString,
-  GraphQLList
-} from 'graphql'
-import {
-  mutationWithClientMutationId
-} from 'graphql-relay'
+import { GraphQLNonNull, GraphQLInputObjectType, GraphQLBoolean } from 'graphql'
+import { mutationWithClientMutationId } from 'graphql-relay'
 
-import {toAttributesFields, toGraphQLFieldConfig, toGraphQLInputFieldMap} from '../transformer'
-import * as utils from '../utils'
+import { toAttributesFields, toGraphQLFieldConfig, toGraphQLInputFieldMap } from '../transformer'
+import { utils } from '../utils'
 import _type from '../type'
 
-export default ({
-                  model,
-                  modelTypes,
-                  // schemaConfig
-                }) => {
+export default ({ model, modelTypes }) => {
   const tableName = utils.getTableName(model)
   const lowerCaseTableName = utils.lcFirst(tableName)
   const modelType = modelTypes[tableName]

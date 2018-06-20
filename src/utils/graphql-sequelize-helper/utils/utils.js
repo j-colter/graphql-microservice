@@ -1,13 +1,11 @@
 import camelcase from 'camelcase'
 import defaults from 'defaults'
 import pluralize from 'pluralize'
-import {
-  GraphQLNonNull
-} from 'graphql'
+import { GraphQLNonNull } from 'graphql'
 import _ from 'lodash'
 
-import { StringHelper } from './utils/index'
-import _type from './type'
+import { StringHelper } from './index'
+import _type from '../type/index'
 
 export const getTableName = (model) => {
   return model.name

@@ -1,21 +1,13 @@
 import defaults from 'defaults'
-import {
-  GraphQLObjectType,
-  GraphQLSchema
-} from 'graphql'
-import {
-  resolver,
-  relay
-} from 'graphql-sequelize'
+import { GraphQLObjectType, GraphQLSchema } from 'graphql'
+import { resolver, relay } from 'graphql-sequelize'
 import _ from 'lodash'
 
-import getModelTypes from './getModalTypes'
-import getQueryAndMutation from './getQueryAndMutation'
-import getSubscriptions from './subscription/subscriptions'
+import { getModelTypes, graphqlModel } from './graphql'
 
 const { sequelizeConnection } = relay
 
-const getSchema = (sequelize, schemaConfig) => {
+export default (sequelize, schemaConfig) => {
   schemaConfig = defaults(schemaConfig, {
     models: (model) => (model),
     mutations: () => {},
@@ -35,15 +27,15 @@ const getSchema = (sequelize, schemaConfig) => {
 
   for (let modelName in models) {
     const model = models[modelName]
-    const modelQueryAndMutation = getQueryAndMutation({model, modelTypes, schemaConfig, models})
+    const modelQueryAndMutation = graphqlModel({model, modelTypes, schemaConfig})
     for (let queryName in modelQueryAndMutation.queries) {
       queries[queryName] = modelQueryAndMutation.queries[queryName]
     }
+
     for (let mutationName in modelQueryAndMutation.mutations) {
       mutations[mutationName] = modelQueryAndMutation.mutations[mutationName]
     }
 
-    // const subscriptionType = getSubscriptions({model, modelTypes, schemaConfig, models})
     for (let subscriptionName in modelQueryAndMutation.subscriptions) {
       subscriptions[subscriptionName] = modelQueryAndMutation.subscriptions[subscriptionName]
     }
@@ -92,5 +84,3 @@ const getSchema = (sequelize, schemaConfig) => {
 
   return new GraphQLSchema(schemaConfig.schema(schema))
 }
-
-export default getSchema
