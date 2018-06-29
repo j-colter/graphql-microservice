@@ -32,6 +32,8 @@
     "mocha": "^5.2.0",
     "mochawesome": "^3.0.2",
     "nodemon": "^1.12.1",
+    "query-string": "^6.1.0",
+    "supertest": "^3.1.0",
     "xmlhttprequest": "^1.8.0"
   },
   "dependencies": {
